@@ -22,7 +22,7 @@ export const navLinks = [
   {
     id: 5,
     name: 'Developer',
-    href: '#',
+    href: '/dashboard',
   },
 ];
 
