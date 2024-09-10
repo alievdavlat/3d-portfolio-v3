@@ -1,0 +1,10 @@
+https://docs.convex.dev/file-storage/upload-files convex file upload
+
+1 - dashboard yasash 
+
+2 - api ulash
+
+3 - deploy
+
+4 - project single
+
