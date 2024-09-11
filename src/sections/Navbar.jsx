@@ -1,19 +1,14 @@
 import { useState } from "react";
 
 import { navLinks } from "../constants/index.js";
-import { Link } from "react-router-dom";
 
 const NavItems = ({ onClick = () => {} }) => (
   <ul className="nav-ul">
     {navLinks.map((item) => (
       <li key={item.id} className="nav-li">
-        {item.name === "Developer" ? (
-          <Link to={item.href} className="nav-li_a" onClick={onClick}>{item.name}</Link>
-        ) : (
           <a href={item.href} className="nav-li_a" onClick={onClick}>
             {item.name}
           </a>
-        )}
       </li>
     ))}
   </ul>
@@ -36,7 +31,6 @@ const Navbar = () => {
           </a>
 
           <button
-            onClick={toggleMenu}
             className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex"
             aria-label="Toggle menu">
             <img
@@ -54,7 +48,7 @@ const Navbar = () => {
 
       <div className={`nav-sidebar ${isOpen ? "max-h-screen" : "max-h-0"}`}>
         <nav className="p-5">
-          <NavItems onClick={closeMenu} />
+          <NavItems onClick={closeMenu}  />
         </nav>
       </div>
     </header>

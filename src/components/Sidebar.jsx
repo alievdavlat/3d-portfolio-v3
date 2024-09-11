@@ -4,15 +4,18 @@ import { HiHome } from "react-icons/hi";
 import Box from "./Box";
 import SidebarItem from "./SidebarItem";
 import { twMerge } from "tailwind-merge";
-import { useParams } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import { FaCircleChevronLeft } from "react-icons/fa6";
 import { FaCircleChevronRight } from "react-icons/fa6";
+import { FaBook, FaThList } from "react-icons/fa";
+import { IoIosCreate } from "react-icons/io";
+
 import { useMediaQuery } from "usehooks-ts";
 
 const Sidebar = ({ children }) => {
-  const pathname = useParams();
-
+  const {pathname} = useLocation();
+  
   const isMobile = useMediaQuery("(max-width: 770px)");
   const sidebarRef = useRef(null);
   const contentRef = useRef(null);
@@ -24,24 +27,30 @@ const Sidebar = ({ children }) => {
     () => [
       {
         id: 1,
-        label: "Dashboard",
-        active: pathname !== "dashboard",
+        label: "Home",
+        active: pathname == "/",
         href: "/",
         Icon: HiHome,
       },
       {
         id: 2,
-        label: "Search",
-        active: pathname === "/search",
-        href: "/search",
-        Icon: BiSearch,
+        label: "About",
+        href: "/about",
+        Icon: FaBook,
         children: [
           {
             id: 3,
-            label: "Dashboard",
-            active: pathname !== "dashboard",
-            href: "/",
-            Icon: HiHome,
+            label: "create",
+            active: pathname === "/dashboard/create-about",
+            href: "/dashboard/create-about",
+            Icon: IoIosCreate,
+          },
+          {
+            id: 4,
+            label: "About list",
+            active: pathname === "/dashboard/about-list",
+            href: "/dashboard/about-list",
+            Icon: FaThList,
           },
         ],
       },
@@ -131,7 +140,9 @@ const Sidebar = ({ children }) => {
         h-full flex-1 overflow-y-auto py-2
         ${isResetting && "transition-all ease-in duration-300"}
         ${isMobile && "w-full left-0"}
-        `} ref={contentRef}>{children}</div>
+        `} ref={contentRef}>
+          <Outlet/>
+        </div>
     </div>
   );
 };
