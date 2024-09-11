@@ -61,13 +61,7 @@ const App = () => {
 
       <Routes>
         <Route path="/" element={<Home  />} />
-
-        <Route path="/dashboard" element={<Sidebar />}>
-            <Route path="/dashboard/create-about" element={<CreateABout/>}/>
-            <Route path="/dashboard/about-list" element={<AboutList/>} />
-        </Route>
-
-
+        <Route path="/dashboard" element={<Sidebar />}/>
       </Routes>
 
       <div className="w-full h-full inset-0 -z-10">
