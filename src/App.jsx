@@ -2,9 +2,6 @@ import { Helmet } from "react-helmet";
 import { BackgroundBeams } from "./components/BackgroundBoxes.jsx";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Dashboard from "./pages/Dashboard.jsx";
-import CreateABout from "./pages/CreateABout.jsx";
-import AboutList from "./pages/About/aboutList.jsx";
 import Sidebar from "./components/Sidebar.jsx";
 
 const App = () => {
