@@ -3,11 +3,13 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
+// The original target-stand model was hosted on a Supabase bucket that no longer
+// resolves, so reuse a model that already ships with the project instead.
+const TARGET_MODEL = '/models/computer.glb';
+
 const Target = (props) => {
   const targetRef = useRef();
-  const { scene } = useGLTF(
-    'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/target-stand/model.gltf',
-  );
+  const { scene } = useGLTF(TARGET_MODEL);
 
   useGSAP(() => {
     gsap.to(targetRef.current.position, {
@@ -24,5 +26,7 @@ const Target = (props) => {
     </mesh>
   );
 };
+
+useGLTF.preload(TARGET_MODEL);
 
 export default Target;
